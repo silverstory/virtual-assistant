@@ -3,13 +3,13 @@ import BlogCard from '../molecules/BlogCard';
 
 const blogs = [
   {
-    name: 'Dev Community',
-    link: 'https://dev.to/jeffreythecoder',
+    name: '8888 Blog',
+    link: 'https://8888.gov.ph',
     imgSrc: 'dev.png',
   },
   {
     name: 'Medium',
-    link: 'https://jeffreyzepengyu.medium.com/',
+    link: 'https://8888.medium.com/',
     imgSrc: 'medium.webp',
   },
 ];

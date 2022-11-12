@@ -91,7 +91,7 @@ function ExperienceCard({
             }}
             onClick={() => setReadMore(!readMore)}
           >
-            <Typography color={grey[600]}>See my work</Typography>
+            <Typography color={grey[600]}>See our activities</Typography>
           </ButtonBase>
         )}
       </Box>

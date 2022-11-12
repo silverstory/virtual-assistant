@@ -38,7 +38,8 @@ const getJokeOptions = (actionProvider) => {
 const getPersonalOptions = (actionProvider) => {
   return [
     {
-      text: 'Experience',
+      // text: 'Experience',
+      text: 'Services',
       handler: () => actionProvider.handleExperience(),
       id: 1,
     },

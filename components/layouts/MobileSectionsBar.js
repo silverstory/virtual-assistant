@@ -54,7 +54,8 @@ function MobileSectionsBar() {
 
   const DrawerContent = () => {
     switch (section) {
-      case 'Experience':
+      // case 'Experience':
+      case 'Services':
         return <ExperienceCards isDetailed={true} />;
       case 'Projects':
         return <ProjectCards isDetailed={true} />;
@@ -72,35 +73,41 @@ function MobileSectionsBar() {
       <List>
         <ListItem disablePadding>
           <ListItemButton
-            aria-label="experience"
-            onClick={() => toggleDrawer(true, 'Experience')}
+            // aria-label="services"
+            aria-label="services"
+            onClick={() => toggleDrawer(true, 'Activities')}
           >
             <ListItemIcon>
               <WorkOutlineIcon />
             </ListItemIcon>
-            <ListItemText primary="Experience" />
+            {/* <ListItemText primary="Experience" /> */}
+            <ListItemText primary="Services" />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
           <ListItemButton
-            aria-label="projects"
+            // aria-label="projects"
+            aria-label="activities"
             onClick={() => toggleDrawer(true, 'Projects')}
           >
             <ListItemIcon>
               <ArchitectureRoundedIcon />
             </ListItemIcon>
-            <ListItemText primary="Projects" />
+            {/* <ListItemText primary="Projects" /> */}
+            <ListItemText primary="Activities" />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
           <ListItemButton
-            aria-label="skills"
+            // aria-label="skills"
+            aria-label="events"
             onClick={() => toggleDrawer(true, 'Skills')}
           >
             <ListItemIcon>
               <CodeOutlinedIcon />
             </ListItemIcon>
-            <ListItemText primary="Skills" />
+            {/* <ListItemText primary="Skills" /> */}
+            <ListItemText primary="Events" />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>

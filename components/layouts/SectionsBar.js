@@ -48,7 +48,8 @@ function SectionsBar() {
 
   const DrawerContent = () => {
     switch (section) {
-      case 'Experience':
+      // case 'Experience':
+      case 'Services':
         return <ExperienceCards isDetailed={true} />;
       case 'Projects':
         return <ProjectCards isDetailed={true} />;
@@ -64,23 +65,28 @@ function SectionsBar() {
   return (
     <>
       <Tooltip
-        title={<span style={{ fontSize: 13 }}>experience</span>}
+        // title={<span style={{ fontSize: 13 }}>experience</span>}
+        title={<span style={{ fontSize: 13 }}>services</span>}
         placement="left"
       >
         <IconButton
-          aria-label="experience"
-          onClick={() => toggleDrawer(true, 'Experience')}
+          // aria-label="experience"
+          aria-label="services"
+          // onClick={() => toggleDrawer(true, 'Experience')}
+          onClick={() => toggleDrawer(true, 'Services')}
         >
           <WorkOutlineIcon sx={{ color: grey[700], width: 30, height: 30 }} />
         </IconButton>
       </Tooltip>
 
       <Tooltip
-        title={<span style={{ fontSize: 13 }}>projects</span>}
+        // title={<span style={{ fontSize: 13 }}>projects</span>}
+        title={<span style={{ fontSize: 13 }}>services</span>}
         placement="left"
       >
         <IconButton
-          aria-label="projects"
+          // aria-label="projects"
+          aria-label="activities"
           onClick={() => toggleDrawer(true, 'Projects')}
         >
           <ArchitectureRoundedIcon
@@ -90,11 +96,13 @@ function SectionsBar() {
       </Tooltip>
 
       <Tooltip
-        title={<span style={{ fontSize: 13 }}>skills</span>}
+        // title={<span style={{ fontSize: 13 }}>skills</span>}
+        title={<span style={{ fontSize: 13 }}>events</span>}
         placement="left"
       >
         <IconButton
-          aria-label="skills"
+          // aria-label="skills"
+          aria-label="events"
           onClick={() => toggleDrawer(true, 'Skills')}
         >
           <CodeOutlinedIcon sx={{ color: grey[700], width: 30, height: 30 }} />

@@ -58,10 +58,10 @@ export default function Home() {
   return (
     <div className={styles.app}>
       <Head>
-        <title>Inbox · Jeffrey Yu</title>
+        <title>8888 · Virtual Assistant</title>
         <meta
           name="description"
-          content="Jeffrey Yu | Software Engineer | Personal Website "
+          content="Hotline 8888 | Online Assistant | Chatbot"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />

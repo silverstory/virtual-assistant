@@ -3,30 +3,19 @@ import SkillCard from '../molecules/SkillCard';
 
 const skills = [
   {
-    name: 'Languages',
+    name: 'Event1',
     skills: [
-      ['JavaScript', 95],
-      ['Python', 90],
-      ['TypeScript', 85],
-      ['HTML/CSS', 85],
-      ['C++', 75],
-      ['SQL', 70],
-      ['Java', 65],
-      ['Golang', 60],
-      ['Solidity', 50],
+      ['Breakfast', 95],
+      ['Lunch', 90],
+      ['Dinner', 85],
     ],
   },
   {
-    name: 'Frameworks / Tools',
+    name: 'Event2',
     skills: [
-      ['React', 95],
-      ['NodeJS', 85],
-      ['Vue', 80],
-      ['Firebase', 80],
-      ['MongoDB', 75],
-      ['MySQL', 70],
-      ['React Native', 60],
-      ['Django', 55],
+      ['Breakfast', 55],
+      ['Lunch', 70],
+      ['Dinner', 65],
     ],
   },
 ];

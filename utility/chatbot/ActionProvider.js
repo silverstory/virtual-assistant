@@ -1,5 +1,5 @@
 // import { getProgrammingJoke } from 'random-joke-getter';
-import { createClientMessage } from 'react-chatbot-kit';
+import { createClientMessage, createChatBotMessage, createCustomMessage } from 'react-chatbot-kit';
 
 const intro =
   "I'm a Computer Science student at UCLA and an aspiring software engineer. What do you want to know about me?";
@@ -15,32 +15,6 @@ class ActionProvider {
   constructor(createChatBotMessage, setStateFunc) {
     this.createChatBotMessage = createChatBotMessage;
     this.setState = setStateFunc;
-  }
-
-  popLastName() {
-    // if firstname is valid pop lastname, else pop try again, that name doesn't look valid bitch
-    const message = this.createChatBotMessage(
-      'Enter your last name'
-    );
-    // const message = createClientMessage('Hello world!');
-    this.updateChatbotState(message);
-    window.$lastbotmessage = 'Enter your last name';
-  }
-
-  popMobileNumber() {
-    const message = this.createChatBotMessage(
-      'Enter your 11 digit mobile number'
-    );
-    this.updateChatbotState(message);
-    window.$lastbotmessage = 'Enter your 11 digit mobile number';
-  }
-
-  popEmailAddress() {
-    const message = this.createChatBotMessage(
-      'Enter your email address'
-    );
-    this.updateChatbotState(message);
-    window.$lastbotmessage = 'Enter your email address';
   }
 
   // default if bot don't understand your response
@@ -61,25 +35,23 @@ class ActionProvider {
     );
     this.updateChatbotState(greetingMessage);
 
-    setTimeout(() => {
 
-      // if from main menu
-      if (window.$lastbotmessage === undefined) {
-        const message = this.createChatBotMessage(
-          "Please select from these options",
-          {
-            widget: 'introOptions',
-          }
-        );
-        this.updateChatbotState(message);
-      }
 
-      // if wrong mobile number format
+    // if from main menu
+    if (window.$lastbotmessage === undefined) {
+      const message = this.createChatBotMessage(
+        "Please select from these options",
+        {
+          widget: 'introOptions',
+          delay: 1000
+        }
+      );
+      this.updateChatbotState(message);
+    }
 
-      // if wrong email format
+    // if wrong mobile number format
 
-    }, 1000);
-
+    // if wrong email format
 
   }
 
@@ -97,14 +69,13 @@ class ActionProvider {
       'We will need your name and contact info to proceed with filing a complaint.');
     this.updateChatbotState(message);
 
-    setTimeout(() => {
-      const message1 = this.createChatBotMessage(
-        'Agree and continue?'
-        , {
-          widget: 'agreeOptions',
-        });
-      this.updateChatbotState(message1);
-    }, 1000);
+    const message1 = this.createChatBotMessage(
+      'Agree and continue?'
+      , {
+        widget: 'agreeOptions',
+        delay: 1000
+      });
+    this.updateChatbotState(message1);
 
   }
 
@@ -186,11 +157,8 @@ class ActionProvider {
   handleCallHotline8888() {
     const message = this.createChatBotMessage('Just dial 8888 on your phone or landline. It is free.');
     this.updateChatbotState(message);
-    setTimeout(() => {
-      const message1 = this.createChatBotMessage('Thank you for reaching out. Have a good day!');
-      this.updateChatbotState(message1);
-    }, 1000);
-
+    const message1 = this.createChatBotMessage('Thank you for reaching out. Have a good day!', { delay: 1000 });
+    this.updateChatbotState(message1);
   }
 
   handleAgreeFileComplaint() {
@@ -202,28 +170,47 @@ class ActionProvider {
   handleCancelFileComplaint() {
     const message = this.createChatBotMessage('Complaint filing cancelled.');
     this.updateChatbotState(message);
-    setTimeout(() => {
-      const message1 = this.createChatBotMessage('Going back to the main options...', {
-        widget: 'introOptions',
-      });
-      this.updateChatbotState(message1);
-    }, 1000);
+
+    const message1 = this.createChatBotMessage('Going back to the main options...', {
+      widget: 'introOptions',
+      delay: 1000
+    });
+    this.updateChatbotState(message1);
 
   }
 
-  handleSubmitTo8888() {
-    const message = this.createChatBotMessage('We have successfully created your complaint report.');
+  handleLastName() {
+    const message = this.createChatBotMessage('Enter your last name');
     this.updateChatbotState(message);
-    setTimeout(() => {
-      const message1 = this.createChatBotMessage('This is your ticket number ABCDE54321. Please keep it.');
-      this.updateChatbotState(message1);
-    }, 1000);
-    setTimeout(() => {
-      const message2 = this.createChatBotMessage('Thank you for reaching out to us. If you need anything else, here are the options', {
-        widget: 'introOptions',
-      });
-      this.updateChatbotState(message2);
-    }, 2000);
+    window.$lastbotmessage = 'Enter your last name';
+  }
+
+  handleMobileNumber() {
+    const message = this.createChatBotMessage('Enter your 11 digit mobile number');
+    this.updateChatbotState(message);
+    window.$lastbotmessage = 'Enter your 11 digit mobile number';
+  }
+
+  handleEmailAddress() {
+    const message = this.createChatBotMessage(
+      'Enter your email address'
+    );
+    this.updateChatbotState(message);
+    window.$lastbotmessage = 'Enter your email address';
+  }
+
+  handleSubmitTo8888() {
+    const message = this.createChatBotMessage(`We have successfully created your complaint report ${window.$firstname} ${window.$lastname}`);
+    this.updateChatbotState(message);
+
+    const message1 = this.createChatBotMessage('This is your ticket number ABCDE54321. Please save for we will be contacting you soon via your email and mobile.', { delay: 1000 });
+    this.updateChatbotState(message1);
+
+    const message2 = this.createChatBotMessage('Thank you for reaching out to us. If you need anything else, here are the options again', {
+      widget: 'introOptions',
+      delay: 2000
+    });
+    this.updateChatbotState(message2);
 
   }
 

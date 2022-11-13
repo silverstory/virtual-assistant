@@ -51,9 +51,9 @@ function SectionsBar() {
       // case 'Experience':
       case 'Services':
         return <ExperienceCards isDetailed={true} />;
-      case 'Projects':
+      case 'Activities':
         return <ProjectCards isDetailed={true} />;
-      case 'Skills':
+      case 'Events':
         return <SkillCards isDetailed={true} />;
       case 'Blogs':
         return <BlogCards isDetailed={true} />;
@@ -81,13 +81,13 @@ function SectionsBar() {
 
       <Tooltip
         // title={<span style={{ fontSize: 13 }}>projects</span>}
-        title={<span style={{ fontSize: 13 }}>services</span>}
+        title={<span style={{ fontSize: 13 }}>activities</span>}
         placement="left"
       >
         <IconButton
           // aria-label="projects"
           aria-label="activities"
-          onClick={() => toggleDrawer(true, 'Projects')}
+          onClick={() => toggleDrawer(true, 'Activities')}
         >
           <ArchitectureRoundedIcon
             sx={{ color: grey[700], width: 30, height: 30 }}
@@ -103,7 +103,7 @@ function SectionsBar() {
         <IconButton
           // aria-label="skills"
           aria-label="events"
-          onClick={() => toggleDrawer(true, 'Skills')}
+          onClick={() => toggleDrawer(true, 'Events')}
         >
           <CodeOutlinedIcon sx={{ color: grey[700], width: 30, height: 30 }} />
         </IconButton>

@@ -21,7 +21,7 @@ class MessageParser {
       return;
     }
 
-    console.log(message, ' - ', window.$lastbotmessage);
+    // console.log(message, ' - ', window.$lastbotmessage);
 
     const lowerCaseMessage = message.toLowerCase();
 
@@ -32,30 +32,39 @@ class MessageParser {
     if (window.$lastbotmessage === 'Please enter your first name') {
       window.$firstname = message;
       window.$lastusermessage = message;
-      this.actionProvider.popLastName();
+      this.actionProvider.handleLastName();
+    } else {
+
+      if (window.$lastbotmessage === 'Enter your last name') {
+        window.$lastname = message;
+        window.$lastusermessage = message;
+        this.actionProvider.handleMobileNumber();
+      } else {
+
+        if (window.$lastbotmessage === 'Enter your 11 digit mobile number') {
+          window.$mobile = message;
+          window.$lastusermessage = message;
+          this.actionProvider.handleEmailAddress();
+        }
+
+        else {
+
+          if (window.$lastbotmessage === 'Enter your email address') {
+            window.$email = message;
+            window.$lastusermessage = message;
+            this.actionProvider.handleSubmitTo8888();
+          }
+
+          else {
+            this.actionProvider.greet();
+          }
+
+        }
+
+      }
+
     }
 
-    if (window.$lastbotmessage === 'Enter your last name') {
-      window.$lastname = message;
-      window.$lastusermessage = message;
-      this.actionProvider.popMobileNumber();
-    }
-
-    if (window.$lastbotmessage === 'Enter your 11 digit mobile number') {
-      window.$mobile = message;
-      window.$lastusermessage = message;
-      this.actionProvider.popEmailAddress();
-    }
-
-    if (window.$lastbotmessage === 'Enter your email address') {
-      window.$email = message;
-      console.log('dumaan puta', message, window.$lastusermessage);
-      this.actionProvider.handleSubmitTo8888();
-    }
-
-    else {
-      this.actionProvider.greet();
-    }
   }
 
 }

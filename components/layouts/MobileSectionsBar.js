@@ -57,9 +57,9 @@ function MobileSectionsBar() {
       // case 'Experience':
       case 'Services':
         return <ExperienceCards isDetailed={true} />;
-      case 'Projects':
+      case 'Activities':
         return <ProjectCards isDetailed={true} />;
-      case 'Skills':
+      case 'Events':
         return <SkillCards isDetailed={true} />;
       case 'Blogs':
         return <BlogCards isDetailed={true} />;
@@ -75,7 +75,7 @@ function MobileSectionsBar() {
           <ListItemButton
             // aria-label="services"
             aria-label="services"
-            onClick={() => toggleDrawer(true, 'Activities')}
+            onClick={() => toggleDrawer(true, 'Services')}
           >
             <ListItemIcon>
               <WorkOutlineIcon />
@@ -88,7 +88,7 @@ function MobileSectionsBar() {
           <ListItemButton
             // aria-label="projects"
             aria-label="activities"
-            onClick={() => toggleDrawer(true, 'Projects')}
+            onClick={() => toggleDrawer(true, 'Activities')}
           >
             <ListItemIcon>
               <ArchitectureRoundedIcon />
@@ -101,7 +101,7 @@ function MobileSectionsBar() {
           <ListItemButton
             // aria-label="skills"
             aria-label="events"
-            onClick={() => toggleDrawer(true, 'Skills')}
+            onClick={() => toggleDrawer(true, 'Events')}
           >
             <ListItemIcon>
               <CodeOutlinedIcon />

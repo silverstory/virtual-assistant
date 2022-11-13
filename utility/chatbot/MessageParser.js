@@ -52,11 +52,21 @@ class MessageParser {
           if (window.$lastbotmessage === 'Enter your email address') {
             window.$email = message;
             window.$lastusermessage = message;
-            this.actionProvider.handleSubmitTo8888();
+            this.actionProvider.handleComplaintMessage();
           }
 
           else {
-            this.actionProvider.greet();
+
+            if (window.$lastbotmessage === 'Type your complaint') {
+              window.$complaint = message;
+              window.$lastusermessage = message;
+              this.actionProvider.handleSubmitTo8888();
+            }
+
+            else {
+              this.actionProvider.greet();
+            }
+
           }
 
         }

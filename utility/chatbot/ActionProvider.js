@@ -199,11 +199,21 @@ class ActionProvider {
     window.$lastbotmessage = 'Enter your email address';
   }
 
+  handleComplaintMessage() {
+    const message = this.createChatBotMessage(
+      'Type your complaint'
+    );
+    this.updateChatbotState(message);
+    window.$lastbotmessage = 'Type your complaint';
+  }
+
   handleSubmitTo8888() {
-    const message = this.createChatBotMessage(`We have successfully created your complaint report ${window.$firstname} ${window.$lastname}`);
+    const message = this.createChatBotMessage(`We have successfully created your complaint report below ${window.$firstname} ${window.$lastname}`, {
+      widget: 'complaintcardOptions',
+    });
     this.updateChatbotState(message);
 
-    const message1 = this.createChatBotMessage('This is your ticket number ABCDE54321. Please save for we will be contacting you soon via your email and mobile.', { delay: 1000 });
+    const message1 = this.createChatBotMessage('This is your ticket number ABCDE54321. Please save it for we will be contacting you soon via your email and mobile.', { delay: 1000 });
     this.updateChatbotState(message1);
 
     const message2 = this.createChatBotMessage('Thank you for reaching out to us. If you need anything else, here are the options again', {
@@ -211,7 +221,6 @@ class ActionProvider {
       delay: 2000
     });
     this.updateChatbotState(message2);
-
   }
 
   updateChatbotState(message) {

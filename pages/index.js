@@ -43,10 +43,10 @@ const WebHome = () => {
         className={styles}
         config={config}
         actionProvider={ActionProvider}
-        messageHistory={loadMessages()}
-        saveMessages={saveMessages}
+        // messageHistory={loadMessages()}
+        // saveMessages={saveMessages}
         // validator={validateInput}
-        runInitialMessagesWithHistory
+        // runInitialMessagesWithHistory
         messageParser={MessageParser}
       />
       <div className={styles.links}>
@@ -72,7 +72,7 @@ const MobileHome = () => {
         className={styles}
         config={config}
         actionProvider={ActionProvider}
-        messageHistory={loadMessages()}
+        // messageHistory={loadMessages()}
         messageParser={MessageParser}
       />
     </Box>
@@ -93,6 +93,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      {/* {width > 740 ? <WebHome /> : <MobileHome />} */}
       {width > 740 ? <WebHome /> : <MobileHome />}
     </div>
   );

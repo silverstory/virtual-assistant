@@ -4,6 +4,7 @@ import ExperienceCards from '../../components/organisms/ExperienceCards';
 import ProjectCards from '../../components/organisms/ProjectCards';
 import SkillCards from '../../components/organisms/SkillCards';
 import BlogCards from '../../components/organisms/BlogCards';
+import ComplaintCard from '../../components/organisms/ComplaintCard';
 
 const getMoodOptions = (actionProvider) => {
   return [
@@ -178,6 +179,10 @@ const config = {
     {
       widgetName: 'projectsOptions',
       widgetFunc: () => <ProjectCards />,
+    },
+    {
+      widgetName: 'complaintcardOptions',
+      widgetFunc: () => <ComplaintCard />,
     },
     {
       widgetName: 'skillsOptions',

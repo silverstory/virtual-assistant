@@ -11,6 +11,28 @@ import useWindowSize from '../hooks/useWindowSize';
 import { Box } from '@mui/system';
 import MobileHeader from '../components/layouts/MobileHeader';
 
+const saveMessages = (messages, HTMLString) => {
+  if (typeof window !== 'undefined') {
+    // Perform localStorage action
+    localStorage.setItem('chat_messages', JSON.stringify(messages));
+  }
+  
+};
+
+const loadMessages = () => {
+  if (typeof window !== 'undefined') {
+    // Perform localStorage action
+    const messages = JSON.parse(localStorage.getItem('chat_messages'));
+    return messages;
+  }
+
+};
+
+const validateInput = () => {
+  // do wala
+}
+
+
 const WebHome = () => {
   return (
     <>
@@ -21,6 +43,10 @@ const WebHome = () => {
         className={styles}
         config={config}
         actionProvider={ActionProvider}
+        messageHistory={loadMessages()}
+        saveMessages={saveMessages}
+        // validator={validateInput}
+        runInitialMessagesWithHistory
         messageParser={MessageParser}
       />
       <div className={styles.links}>
@@ -46,6 +72,7 @@ const MobileHome = () => {
         className={styles}
         config={config}
         actionProvider={ActionProvider}
+        messageHistory={loadMessages()}
         messageParser={MessageParser}
       />
     </Box>

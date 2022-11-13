@@ -20,6 +20,21 @@ const getMoodOptions = (actionProvider) => {
   ];
 };
 
+const getIntroOptions = (actionProvider) => {
+  return [
+    {
+      text: 'I want to request for assistance',
+      handler: () => actionProvider.handleAssistance(),
+      id: 1,
+    },
+    {
+      text: 'I want to file a complaint',
+      handler: () => actionProvider.handleComplaint(),
+      id: 2,
+    },
+  ];
+}
+
 const getJokeOptions = (actionProvider) => {
   return [
     {
@@ -30,6 +45,37 @@ const getJokeOptions = (actionProvider) => {
     {
       text: 'Tell me another one',
       handler: () => actionProvider.handleBadMoodAgain(),
+      id: 2,
+    },
+  ];
+};
+
+const getAssistanceOptions = (actionProvider) => {
+  return [
+    {
+      text: 'visit 8888 Website',
+      handler: () => actionProvider.handleVisit8888Website(),
+      id: 1,
+    },
+    {
+      text: 'call hotline 8888',
+      handler: () => actionProvider.handleCallHotline8888(),
+      id: 2,
+    },
+  ];
+};
+
+
+const getAgreeOptions = (actionProvider) => {
+  return [
+    {
+      text: 'Yes, I agree',
+      handler: () => actionProvider.handleAgreeFileComplaint(),
+      id: 1,
+    },
+    {
+      text: 'No cancel this',
+      handler: () => actionProvider.handleCancelFileComplaint(),
       id: 2,
     },
   ];
@@ -62,12 +108,12 @@ const getPersonalOptions = (actionProvider) => {
 };
 
 const config = {
-  botName: 'Jeffrey Yu',
+  botName: 'Juan D.',
   initialMessages: [
     createChatBotMessage(
-      "Hi, I'm Jeffrey. Nice to meet you! I How are you doing today?",
+      "Hi, I'm Juan D. the 8888 virtual assistant. How can I help you today?",
       {
-        widget: 'moodOptions',
+        widget: 'introOptions',
       }
     ),
   ],
@@ -81,6 +127,12 @@ const config = {
   // },
   widgets: [
     {
+      widgetName: 'introOptions',
+      widgetFunc: ({ actionProvider }) => (
+        <Options actionProvider={actionProvider} getOptions={getIntroOptions} />
+      ),
+    },
+    {
       widgetName: 'moodOptions',
       widgetFunc: ({ actionProvider }) => (
         <Options actionProvider={actionProvider} getOptions={getMoodOptions} />
@@ -90,6 +142,24 @@ const config = {
       widgetName: 'jokeOptions',
       widgetFunc: ({ actionProvider }) => (
         <Options actionProvider={actionProvider} getOptions={getJokeOptions} />
+      ),
+    },
+    {
+      widgetName: 'assistanceOptions',
+      widgetFunc: ({ actionProvider }) => (
+        <Options
+          actionProvider={actionProvider}
+          getOptions={getAssistanceOptions}
+        />
+      ),
+    },
+    {
+      widgetName: 'agreeOptions',
+      widgetFunc: ({ actionProvider }) => (
+        <Options
+          actionProvider={actionProvider}
+          getOptions={getAgreeOptions}
+        />
       ),
     },
     {

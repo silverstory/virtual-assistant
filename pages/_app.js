@@ -10,16 +10,18 @@ import '../styles/chatbox.css';
 const clientSideEmotionCache = createEmotionCache();
 
 const MyApp = (props) => {
+
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   return (
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={lightTheme}>
         <CssBaseline />
-        <Component {...pageProps} />
+          <Component {...pageProps} />
       </ThemeProvider>
     </CacheProvider>
   );
+
 };
 
 export default MyApp;

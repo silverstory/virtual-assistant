@@ -24,7 +24,8 @@ class ActionProvider {
       'Please enter your first name',
       'Enter your lastname',
       'Enter your 11 digit mobile number',
-      'Enter your email address'
+      'Enter your email address',
+      'Type your complaint'
     ];
 
     if (validbotmessages.includes(window.$lastbotmessage)) {
@@ -152,6 +153,14 @@ class ActionProvider {
     window.open('https://8888.gov.ph/', '_blank');
     const message1 = this.createChatBotMessage('Thank you for reaching out. Have a good day!');
     this.updateChatbotState(message1);
+    // clear vars
+    window.$firstname = '';
+    window.$lastname = '';
+    window.$mobile = '';
+    window.$email = '';
+    window.$complaint = '';
+    window.$lastbotmessage = '';
+    window.$lastusermessage = '';
   }
 
   handleCallHotline8888() {
@@ -159,6 +168,14 @@ class ActionProvider {
     this.updateChatbotState(message);
     const message1 = this.createChatBotMessage('Thank you for reaching out. Have a good day!', { delay: 1000 });
     this.updateChatbotState(message1);
+    // clear vars
+    window.$firstname = '';
+    window.$lastname = '';
+    window.$mobile = '';
+    window.$email = '';
+    window.$complaint = '';
+    window.$lastbotmessage = '';
+    window.$lastusermessage = '';
   }
 
   handleAgreeFileComplaint() {
@@ -176,7 +193,14 @@ class ActionProvider {
       delay: 1000
     });
     this.updateChatbotState(message1);
-
+    // clear vars
+    window.$firstname = '';
+    window.$lastname = '';
+    window.$mobile = '';
+    window.$email = '';
+    window.$complaint = '';
+    window.$lastbotmessage = '';
+    window.$lastusermessage = '';
   }
 
   handleLastName() {
@@ -221,6 +245,15 @@ class ActionProvider {
       delay: 2000
     });
     this.updateChatbotState(message2);
+
+    // clear vars
+    window.$firstname = '';
+    window.$lastname = '';
+    window.$mobile = '';
+    window.$email = '';
+    window.$complaint = '';
+    window.$lastbotmessage = '';
+    window.$lastusermessage = '';
   }
 
   updateChatbotState(message) {

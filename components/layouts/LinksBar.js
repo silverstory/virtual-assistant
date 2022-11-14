@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef } from "react";
 import {
   Avatar,
   IconButton,
@@ -6,23 +6,29 @@ import {
   Box,
   ButtonBase,
   Button,
-} from '@mui/material';
+} from "@mui/material";
 // import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import LanguageIcon from '@mui/icons-material/Language';
+import LanguageIcon from "@mui/icons-material/Language";
 // import GitHubIcon from '@mui/icons-material/GitHub';
-import FacebookIcon from '@mui/icons-material/Facebook';
+import FacebookIcon from "@mui/icons-material/Facebook";
 // import InstagramIcon from '@mui/icons-material/Instagram';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import { grey } from '@mui/material/colors';
-import { Popover } from '@mui/material';
-import Link from 'next/link';
-import PhoneIcon from '@mui/icons-material/Phone';
-import EmailIcon from '@mui/icons-material/Email';
-import StyledBadge from '../atoms/StyledBadge';
+import TwitterIcon from "@mui/icons-material/Twitter";
+import { grey } from "@mui/material/colors";
+import { Popover } from "@mui/material";
+import Link from "next/link";
+import PhoneIcon from "@mui/icons-material/Phone";
+import EmailIcon from "@mui/icons-material/Email";
+import StyledBadge from "../atoms/StyledBadge";
+
+import { useSelector, useDispatch } from 'react-redux';
+import { decrement, increment } from '../../store/counterSlice';
 
 function LinksBar() {
   const avatarRef = useRef(null);
   const [popoverOpen, setPopoverOpen] = useState(false);
+
+  const count = useSelector((state) => state.counter.value)
+  const dispatch = useDispatch()
 
   const handlePopoverClose = () => {
     setPopoverOpen(false);
@@ -37,7 +43,7 @@ function LinksBar() {
       >
         <StyledBadge
           overlap="circular"
-          anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+          anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
           variant="dot"
         >
           <Avatar src="/avatar.jpg" sx={{ width: 50, height: 50 }} />
@@ -48,14 +54,14 @@ function LinksBar() {
         open={popoverOpen}
         onClose={handlePopoverClose}
         anchorEl={avatarRef.current}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
         PaperProps={{
           sx: {
             border: 1,
             borderColor: grey[200],
             padding: 2,
             marginLeft: 2,
-            borderRadius: '5%',
+            borderRadius: "5%",
           },
         }}
         elevation={0}
@@ -63,23 +69,23 @@ function LinksBar() {
         <Box flex flexDirection="column">
           <Typography variant="h6">Hotline 8888</Typography>
           <Box
-            sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
+            sx={{ display: "flex", flexDirection: "row", alignItems: "center" }}
           >
             <EmailIcon />
             <Typography
               variant="span"
-              sx={{ marginLeft: '8px', marginTop: '5px' }}
+              sx={{ marginLeft: "8px", marginTop: "5px" }}
             >
               message@8888.gov.ph
             </Typography>
           </Box>
           <Box
-            sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
+            sx={{ display: "flex", flexDirection: "row", alignItems: "center" }}
           >
             <PhoneIcon />
             <Typography
               variant="span"
-              sx={{ marginLeft: '8px', marginTop: '5px' }}
+              sx={{ marginLeft: "8px", marginTop: "5px" }}
             >
               +632-8888
             </Typography>
@@ -90,15 +96,14 @@ function LinksBar() {
             rel="noreferrer"
           >
             <Button>Privacy policy</Button>
+
+            <span>{count}</span>
+
           </a>
         </Box>
       </Popover>
 
-      <a
-        href="https://8888.gov.ph/"
-        target="_blank"
-        rel="noreferrer"
-      >
+      <a href="https://8888.gov.ph/" target="_blank" rel="noreferrer">
         <IconButton>
           <LanguageIcon sx={{ color: grey[700], width: 30, height: 30 }} />
         </IconButton>
@@ -114,11 +119,7 @@ function LinksBar() {
         </IconButton>
       </a> */}
 
-      <a
-        href="https://facebook.com/#"
-        target="_blank"
-        rel="noreferrer"
-      >
+      <a href="https://facebook.com/#" target="_blank" rel="noreferrer">
         <IconButton>
           <FacebookIcon sx={{ color: grey[700], width: 30, height: 30 }} />
         </IconButton>
@@ -133,11 +134,7 @@ function LinksBar() {
           <GitHubIcon sx={{ color: grey[700], width: 30, height: 30 }} />
         </IconButton>
       </a> */}
-      <a
-        href="https://www.twitter.com/#"
-        target="_blank"
-        rel="noreferrer"
-      >
+      <a href="https://www.twitter.com/#" target="_blank" rel="noreferrer">
         <IconButton>
           <TwitterIcon sx={{ color: grey[700], width: 30, height: 30 }} />
         </IconButton>

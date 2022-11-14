@@ -1,13 +1,14 @@
 // import { saveLastName, getLastName } from "../../context/vars";
 
-
+import { useSelector, useDispatch } from 'react-redux';
+import { decrement, increment } from '../../store/counterSlice';
 
 class MessageParser {
   constructor(actionProvider) {
     this.actionProvider = actionProvider;
-    // const { useVars } = useVars();
+    this.count = useSelector((state) => state.counter.value);
+    this.dispatch = useDispatch();
   }
-
 
   // parse(message) {
   //   this.actionProvider.greet();
@@ -32,12 +33,15 @@ class MessageParser {
     if (window.$lastbotmessage === 'Please enter your first name') {
       window.$firstname = message;
       window.$lastusermessage = message;
+      
       this.actionProvider.handleLastName();
     } else {
 
       if (window.$lastbotmessage === 'Enter your last name') {
         window.$lastname = message;
         window.$lastusermessage = message;
+        this.dispatch(increment());
+        // console.log(this.count);
         this.actionProvider.handleMobileNumber();
       } else {
 

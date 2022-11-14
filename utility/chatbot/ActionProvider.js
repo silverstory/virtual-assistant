@@ -1,6 +1,9 @@
 // import { getProgrammingJoke } from 'random-joke-getter';
 import { createClientMessage, createChatBotMessage, createCustomMessage } from 'react-chatbot-kit';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { decrement, increment } from '../../store/counterSlice';
+
 const intro =
   "I'm a Computer Science student at UCLA and an aspiring software engineer. What do you want to know about me?";
 const experience =
@@ -15,6 +18,8 @@ class ActionProvider {
   constructor(createChatBotMessage, setStateFunc) {
     this.createChatBotMessage = createChatBotMessage;
     this.setState = setStateFunc;
+    this.count = useSelector((state) => state.counter.value);
+    this.dispatch = useDispatch();
   }
 
   // default if bot don't understand your response
@@ -35,6 +40,8 @@ class ActionProvider {
       'Sorry, I don\'t understand that. I\'m just a bot.'
     );
     this.updateChatbotState(greetingMessage);
+
+    this.dispatch(increment());
 
 
 

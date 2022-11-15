@@ -117,6 +117,7 @@ const config = {
         widget: 'introOptions',
       }
     ),
+    // add another message here for privacy consent with widget and agree / decline buttons
   ],
   // customStyles: {
   //   botMessageBox: {

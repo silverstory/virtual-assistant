@@ -2,22 +2,43 @@
 import { createClientMessage, createChatBotMessage, createCustomMessage } from 'react-chatbot-kit';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { decrement, increment } from '../../store/counterSlice';
+import { updateLastBotMessage } from '../../store/lastBotMsgSlice';
+
+import { decrement, increment, incrementByAmount } from '../../store/counterSlice';
+
+// const intro =
+//   "I'm a Computer Science student at UCLA and an aspiring software engineer. What do you want to know about me?";
+// const experience =
+//   'I worked as Software Engineer intern at Paramount, Done. and TechFin.AI.';
+// const projects =
+//   "I'm love spotting problems from people around me and building solutions that make their lives easier.";
+// const skills =
+//   "I have three years of experience in fullstack development. I'm a MERN stack lover (MongoDB, Express, React, Node.js).";
+// const blogs = 'Check out my blogs on Dev Community and Medium!';
 
 const intro =
-  "I'm a Computer Science student at UCLA and an aspiring software engineer. What do you want to know about me?";
+  "";
 const experience =
-  'I worked as Software Engineer intern at Paramount, Done. and TechFin.AI.';
+  '';
 const projects =
-  "I'm love spotting problems from people around me and building solutions that make their lives easier.";
+  "";
 const skills =
-  "I have three years of experience in fullstack development. I'm a MERN stack lover (MongoDB, Express, React, Node.js).";
-const blogs = 'Check out my blogs on Dev Community and Medium!';
+  "";
+const blogs = '';
+
+const BotEnum = {
+  EnterFname: 'Please enter your first name',
+  EnterLname: 'Enter your lastname',
+  EnterMobile: 'Enter your 11 digit mobile number',
+  EnterEmail: 'Enter your email address',
+  EnterComplaint: 'Type your complaint',
+};
 
 class ActionProvider {
   constructor(createChatBotMessage, setStateFunc) {
     this.createChatBotMessage = createChatBotMessage;
     this.setState = setStateFunc;
+    this.lastbotmessage = useSelector((state) => state.lastbotmessage.value);
     this.count = useSelector((state) => state.counter.value);
     this.dispatch = useDispatch();
   }
@@ -51,7 +72,7 @@ class ActionProvider {
         "Please select from these options",
         {
           widget: 'introOptions',
-          delay: 1000
+          delay: 1500
         }
       );
       this.updateChatbotState(message);
@@ -81,7 +102,7 @@ class ActionProvider {
       'Agree and continue?'
       , {
         widget: 'agreeOptions',
-        delay: 1000
+        delay: 2000
       });
     this.updateChatbotState(message1);
 
@@ -166,7 +187,8 @@ class ActionProvider {
     window.$mobile = '';
     window.$email = '';
     window.$complaint = '';
-    window.$lastbotmessage = '';
+    // window.$lastbotmessage = '';
+    this.dispatch(updateLastBotMessage(''));
     window.$lastusermessage = '';
   }
 
@@ -181,14 +203,16 @@ class ActionProvider {
     window.$mobile = '';
     window.$email = '';
     window.$complaint = '';
-    window.$lastbotmessage = '';
+    // window.$lastbotmessage = '';
+    this.dispatch(updateLastBotMessage(''));
     window.$lastusermessage = '';
   }
 
   handleAgreeFileComplaint() {
-    const message = this.createChatBotMessage('Please enter your first name');
+    const message = this.createChatBotMessage(BotEnum.EnterFname);
     this.updateChatbotState(message);
-    window.$lastbotmessage = 'Please enter your first name';
+    // window.$lastbotmessage = 'Please enter your first name';
+    this.dispatch(updateLastBotMessage(BotEnum.EnterFname));
   }
 
   handleCancelFileComplaint() {
@@ -197,7 +221,7 @@ class ActionProvider {
 
     const message1 = this.createChatBotMessage('Going back to the main options...', {
       widget: 'introOptions',
-      delay: 1000
+      delay: 1500
     });
     this.updateChatbotState(message1);
     // clear vars
@@ -206,52 +230,65 @@ class ActionProvider {
     window.$mobile = '';
     window.$email = '';
     window.$complaint = '';
-    window.$lastbotmessage = '';
+    // window.$lastbotmessage = '';
+    this.dispatch(updateLastBotMessage(''));
     window.$lastusermessage = '';
   }
 
   handleLastName() {
-    const message = this.createChatBotMessage('Enter your last name');
+    const message = this.createChatBotMessage(BotEnum.EnterLname);
     this.updateChatbotState(message);
-    window.$lastbotmessage = 'Enter your last name';
+    // window.$lastbotmessage = 'Enter your last name';
+    this.dispatch(updateLastBotMessage(BotEnum.EnterLname));
   }
 
   handleMobileNumber() {
-    const message = this.createChatBotMessage('Enter your 11 digit mobile number');
+    const message = this.createChatBotMessage(BotEnum.EnterMobile);
     this.updateChatbotState(message);
-    window.$lastbotmessage = 'Enter your 11 digit mobile number';
+    // window.$lastbotmessage = 'Enter your 11 digit mobile number';
+    this.dispatch(updateLastBotMessage(BotEnum.EnterMobile));
   }
 
   handleEmailAddress() {
     const message = this.createChatBotMessage(
-      'Enter your email address'
+      BotEnum.EnterEmail
     );
     this.updateChatbotState(message);
-    window.$lastbotmessage = 'Enter your email address';
+    // window.$lastbotmessage = 'Enter your email address';
+    this.dispatch(updateLastBotMessage(BotEnum.EnterEmail));
   }
 
   handleComplaintMessage() {
     const message = this.createChatBotMessage(
-      'Type your complaint'
+      BotEnum.EnterComplaint
     );
     this.updateChatbotState(message);
-    window.$lastbotmessage = 'Type your complaint';
+    // window.$lastbotmessage = 'Type your complaint';
+    this.dispatch(updateLastBotMessage(BotEnum.EnterComplaint));
   }
 
   handleSubmitTo8888() {
     const message = this.createChatBotMessage(`We have successfully created your complaint report below ${window.$firstname} ${window.$lastname}`, {
       widget: 'complaintcardOptions',
+      delay: 1000,
     });
     this.updateChatbotState(message);
 
-    const message1 = this.createChatBotMessage('This is your ticket number ABCDE54321. Please save it for we will be contacting you soon via your email and mobile.', { delay: 1000 });
+    const message1 = this.createChatBotMessage('This is your ticket number ABCDE54321. Please save it for we will be contacting you soon via your email and mobile.', { delay: 2000 });
     this.updateChatbotState(message1);
 
     const message2 = this.createChatBotMessage('Thank you for reaching out to us. If you need anything else, here are the options again', {
       widget: 'introOptions',
-      delay: 2000
+      delay: 4000
     });
     this.updateChatbotState(message2);
+
+    // set complaint card vars
+    window.$ccfirstname = window.$firstname;
+    window.$cclastname = window.$lastname;
+    window.$ccmobile = window.$mobile;
+    window.$ccemail = window.$email;
+    window.$cccomplaint = window.$complaint;
 
     // clear vars
     window.$firstname = '';
@@ -259,7 +296,8 @@ class ActionProvider {
     window.$mobile = '';
     window.$email = '';
     window.$complaint = '';
-    window.$lastbotmessage = '';
+    // window.$lastbotmessage = '';
+    this.dispatch(updateLastBotMessage(''));
     window.$lastusermessage = '';
   }
 

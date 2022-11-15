@@ -6,15 +6,15 @@ function ComplaintCard({ isDetailed }) {
   let date = new Date().toLocaleDateString();
 
   const complaintcard = {
-    name: 'Firstname: ' + window.$firstname,
-    position: 'Lastname: ' + window.$lastname,
+    name: 'Firstname: ' + window.$ccfirstname,
+    position: 'Lastname: ' + window.$cclastname,
     date: 'Date filed: ' + date,
-    imgSrc: 'done.png',
+    imgSrc: '✅',
     link: 'https://8888.gov.ph',
     works: [
-      'Mobile: ' + window.$mobile,
-      'Email: ' +  window.$email,
-      'Complaint: ' + window.$complaint,
+      'Mobile: ' + window.$ccmobile,
+      'Email: ' +  window.$ccemail,
+      'Complaint: ' + window.$cccomplaint,
     ],
   };
 

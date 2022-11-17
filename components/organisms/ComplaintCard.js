@@ -1,20 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import ExperienceCard from '../molecules/ExperienceCard';
+import React, { useState, useEffect } from "react";
+import ExperienceCard from "../molecules/ExperienceCard";
+
+import { useSelector, useDispatch } from "react-redux";
+
+import {
+  ccUpdateFirstname,
+  ccUpdateLastname,
+  ccUpdateMobile,
+  ccUpdateEmail,
+  ccUpdateComplaint,
+  ccUpdateNature,
+} from "../../store/ccComplaintSlice";
 
 function ComplaintCard({ isDetailed }) {
+  const { ccfirstname, cclastname, ccmobile, ccemail, cccomplaint, ccnature } =
+    useSelector((state) => state.cccomplaintdata);
+  const dispatch = useDispatch();
 
-  let date = new Date().toLocaleDateString();
+  // let date = new Date().toLocaleDateString();
+  let date = new Date();
 
   const complaintcard = {
-    name: 'Firstname: ' + window.$ccfirstname,
-    position: 'Lastname: ' + window.$cclastname,
-    date: 'Date filed: ' + date,
-    imgSrc: '✅',
-    link: 'https://8888.gov.ph',
+    name: "Name: " + ccfirstname,
+    position: "Nature: " + ccnature,
+    date: cclastname,
+    imgSrc: "✅",
+    link: "https://8888.gov.ph",
     works: [
-      'Mobile: ' + window.$ccmobile,
-      'Email: ' +  window.$ccemail,
-      'Complaint: ' + window.$cccomplaint,
+      "Mobile: " + ccmobile,
+      "Email: " + ccemail,
+      "Complaint: " + cccomplaint,
     ],
   };
 
@@ -37,25 +52,33 @@ function ComplaintCard({ isDetailed }) {
 
   return (
     <>
-          <ExperienceCard
-            name={complaintcard.name}
-            position={complaintcard.position}
-            date={complaintcard.date}
-            imgSrc={complaintcard.imgSrc}
-            works={complaintcard.works}
-            link={complaintcard.link}
-            key={1}
-            isDetailed={true}
-          />
+      <ExperienceCard
+        name={complaintcard.name}
+        position={complaintcard.position}
+        date={complaintcard.date}
+        imgSrc={complaintcard.imgSrc}
+        works={complaintcard.works}
+        link={complaintcard.link}
+        key={date}
+        isDetailed={true}
+      />
+
+      {/* <ExperienceCard
+        name={complaintcard.name}
+        position={complaintcard.position}
+        date={complaintcard.date}
+        imgSrc={complaintcard.imgSrc}
+        works={complaintcard.works}
+        link={complaintcard.link}
+        key={1}
+        isDetailed={true}
+      /> */}
+
     </>
   );
 }
 
 export default ComplaintCard;
-
-
-
-
 
 // import React, { useState, useEffect } from 'react';
 // import ExperienceCard from '../molecules/ExperienceCard';

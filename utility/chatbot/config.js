@@ -82,6 +82,21 @@ const getAgreeOptions = (actionProvider) => {
   ];
 };
 
+const getAgreeSubmitC = (actionProvider) => {
+  return [
+    {
+      text: 'Continue',
+      handler: () => actionProvider.handleAgreeSubmitComplaint(),
+      id: 1,
+    },
+    {
+      text: 'Cancel',
+      handler: () => actionProvider.handleCancelFileComplaint(),
+      id: 2,
+    },
+  ];
+};
+
 const getPersonalOptions = (actionProvider) => {
   return [
     {
@@ -152,6 +167,15 @@ const config = {
         <Options
           actionProvider={actionProvider}
           getOptions={getAssistanceOptions}
+        />
+      ),
+    },
+    {
+      widgetName: 'submitComplaintOptions',
+      widgetFunc: ({ actionProvider }) => (
+        <Options
+          actionProvider={actionProvider}
+          getOptions={getAgreeSubmitC}
         />
       ),
     },
